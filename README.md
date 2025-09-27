@@ -19,6 +19,9 @@ La quiralidad es una característica geométrica que poseen ciertas moléculas, 
 De esta propiedad surgen los enantiómeros, compuestos que comparten gran parte de sus propiedades químicas, pero que pueden generar efectos biológicos muy distintos.
 Un caso emblemático es el de la talidomida.
 
+
+Y bueno , teniendo en cuenta como dato importante , presentamos 2 permisos o licencias que podriamos usar para este proyecto o pagina web 
+
 | **Licencia** | **Justificación** |
 |--------------|-------------------|
 | **MIT** | Es una licencia permisiva que permite usar, copiar, modificar y distribuir el proyecto, incluso con fines comerciales. Ideal si buscas máxima difusión y facilidad de colaboración sin muchas restricciones. |
