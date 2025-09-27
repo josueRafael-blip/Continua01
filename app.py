@@ -280,16 +280,15 @@ def main():
         st.subheader("🛠️ **Instrucciones**")
         st.markdown(f'<p style="color: {TEXT_COLOR}">Este módulo utiliza RDKit para detectar centros quirales y generar todas las combinaciones estéreo-isoméricas (máx. 3 centros).</p>', unsafe_allow_html=True)
         st.markdown("""
-        **Flujo de trabajo:**
-        1. Ingresa el SMILES y asegúrate de especificar los centros con **@** o **@ @**.
-        2. Analiza los centros detectados.
-        3. Genera y descarga los **SMILES** o los archivos **XYZ** para 3D.
-        
-        **EJEMPLOS:**
-        Molécula simple (sin centros quirales): C=CC
-        Molécula con un centro quiral: CC(O)C
-        Con estereoquímica definida: C[C@H](N)O
-        Aminoácido alternativo (alanina): N[C@H](C)C(=O)O
+        **Flujo de trabajo Y Ejemplos:**
+        1. Ingresa un código **SMILES** (puede incluir o no quiralidad).  
+           - Ejemplo sin centros quirales: `C=CC`  
+           - Ejemplo con un centro quiral: `CC(O)C`  
+        2. El sistema detecta automáticamente los **centros quirales**.  
+           - Ejemplo con estereoquímica definida: `C[C@H](N)O`  
+        3. Si hay estereoquímica definida con `@` o `@@`, se generan los posibles estereoisómeros.  
+           - Ejemplo de aminoácido (alanina): `N[C@H](C)C(=O)O`  
+
         """)
         st.markdown("---")
         st.markdown('<div style="text-align: center; color: #555555;"><small>Interfaz de Laboratorio v2.0</small></div>', unsafe_allow_html=True)
