@@ -5,9 +5,9 @@ import zipfile
 import tempfile
 import io
 import sys
-
-# Configuración para evitar warnings de RDKit
 import warnings
+
+# Evitar warnings de RDKit
 warnings.filterwarnings('ignore')
 
 # Manejo de importación de RDKit
@@ -19,6 +19,16 @@ except ImportError:
     st.error("❌ RDKit no está instalado. Por favor instala RDKit para usar la funcionalidad de conversión a XYZ.")
     st.info("Instala con: pip install rdkit")
     RDKIT_AVAILABLE = False
+
+# Importar py3Dmol para visualización 3D
+import py3Dmol
+
+def mostrar_molecula_xyz(xyz_string):
+    viewer = py3Dmol.view(width=400, height=400)
+    viewer.addModel(xyz_string, "xyz")
+    viewer.setStyle({"stick": {}})
+    viewer.zoomTo()
+    return viewer
 
 def detectar_quiralidad(smiles: str):
     if not RDKIT_AVAILABLE:
@@ -157,7 +167,7 @@ def main():
     )
     
     st.title("🧬 Generador de Estereoisómeros")
-    st.markdown("**Genera todos los estereoisómeros posibles y convierte a formato XYZ**")
+    st.markdown("**Genera todos los estereoisómeros posibles y convierte a formato XYZ con visualización 3D**")
     
     with st.sidebar:
         try:
@@ -173,7 +183,7 @@ def main():
         2. La aplicación identificará de forma automática si la molécula presenta quiralidad.
         3. Cuando el SMILES incluye centros quirales indicados (@ o @@), se generarán todos los estereoisómeros posibles.
         4. Se admite un máximo de 3 centros quirales para evitar un número excesivo de isómeros.
-        5. Opcionalmente convierte a formato XYZ para visualización 3D
+        5. Opcionalmente convierte a formato XYZ y visualiza la molécula en 3D.
         
         **Ejemplos de SMILES:**
         - Molécula simple (sin centros quirales): C=CC
@@ -229,13 +239,12 @@ def main():
             Ejemplo: `CC(O)C(N)C` → `C[C@H](O)[C@@H](N)C`
             """)
         
-        # Siempre inicializar
+        # Inicializar
         isomeros, n_centros = [], 0
         if centros_especificados > 0:
             with st.spinner("🔄 Generando estereoisómeros..."):
                 isomeros, n_centros = generar_estereoisomeros(smiles_input)
         
-        # Crear tabs aunque no haya isómeros
         tab1, tab2, tab3 = st.tabs(["📋 Lista Completa", "💾 Descargar SMI", "🧪 Convertir a XYZ"])
         
         if isomeros:
@@ -297,9 +306,16 @@ def main():
                             file_name="estereoisomeros_xyz.zip",
                             mime="application/zip"
                         )
-                        with st.expander("👀 Vista previa del primer archivo XYZ"):
-                            primer_archivo = list(archivos_xyz.values())[0]
-                            st.code(primer_archivo)
+
+                        # Selección para vista 3D
+                        opciones = list(archivos_xyz.keys())
+                        seleccion = st.selectbox("🧩 Selecciona un isómero para visualizar en 3D", opciones)
+                        if seleccion:
+                            st.subheader(f"Vista 3D de {seleccion}")
+                            xyz_data = archivos_xyz[seleccion]
+                            viewer = mostrar_molecula_xyz(xyz_data)
+                            html = viewer._make_html()
+                            st.components.v1.html(html, height=450)
         else:
             st.info("💡 Ingresa un SMILES con centros quirales especificados (@ o @@) para generar estereoisómeros")
     
@@ -308,7 +324,7 @@ def main():
         """
         <div style='text-align: center'>
             <small>🧬 <strong>Inchiral</strong> - Universidad Científica del Sur<br>
-            Generador de Estereoisómeros | Desarrollado con Streamlit y RDKit</small>
+            Generador de Estereoisómeros | Desarrollado con Streamlit, RDKit y py3Dmol</small>
         </div>
         """,
         unsafe_allow_html=True
