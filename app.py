@@ -169,17 +169,17 @@ def main():
         st.title("ℹ️ Información")
         st.markdown("""
         **Instrucciones:**
-        1. Ingresa un código SMILES (con o sin quiralidad especificada)
-        2. El sistema detecta automáticamente si la molécula es quiral
-        3. Si tiene centros quirales especificados (@ o @@), genera todos los estereoisómeros
-        4. Máximo 3 centros quirales para evitar demasiados isómeros
+        1. Escribe un código SMILES, ya sea con quiralidad definida o no.
+        2. La aplicación identificará de forma automática si la molécula presenta quiralidad.
+        3. Cuando el SMILES incluye centros quirales indicados (@ o @@), se generarán todos los estereoisómeros posibles.
+        4. Se admite un máximo de 3 centros quirales para evitar un número excesivo de isómeros.
         5. Opcionalmente convierte a formato XYZ para visualización 3D
         
         **Ejemplos de SMILES:**
-        - Sin quiralidad: `CCO`
-        - Molécula quiral: `CC(O)C(N)C`
-        - Con quiralidad: `C[C@H](O)[C@@H](N)C`
-        - Aminoácido: `N[C@@H](C)C(=O)O`
+        - Molécula simple (sin centros quirales): C=CC
+        - Molécula con un centro quiral: CC(O)C
+        - Con estereoquímica definida: C[C@H](N)O
+        - Aminoácido alternativo (alanina): N[C@H](C)C(=O)O
         """)
     
     st.subheader("📝 Entrada de Datos")
