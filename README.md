@@ -1,23 +1,20 @@
-# 🌀 Inchiral - Detección de Quiralidad
+🌀 Inchiral - Identificación de Quiralidad
 
-**Inchiral** es una aplicación interactiva y educativa desarrollada en **Streamlit** cuyo propósito es detectar la quiralidad en moléculas y analizar sus posibles estructuras.
+Inchiral es una herramienta interactiva y educativa creada en Streamlit, diseñada para reconocer la quiralidad en moléculas y explorar sus diferentes representaciones estructurales.
 
----
+🎯 Objetivos
 
-## 🎯 Propósito
-- Comprender el concepto de **quiralidad** en química.  
-- Detectar si una molécula es **quiral o aquiral**.  
-- Visualizar moléculas en **3D**.  
-- Servir como **apoyo didáctico** en el aprendizaje de química orgánica.  
+Facilitar la comprensión del concepto de quiralidad en química.
 
----
+Determinar si una molécula es quiral o aquiral.
 
-## 🧪 ¿Qué es la quiralidad?
-La **quiralidad** es una propiedad geométrica de ciertas moléculas en las que su estructura no es superponible con su imagen especular, como sucede con las manos humanas (izquierda y derecha).  
+Permitir la visualización de moléculas en tres dimensiones.
 
-Esto da lugar a moléculas llamadas **enantiómeros**, que pueden tener propiedades químicas similares pero efectos biológicos muy diferentes.  
-Un ejemplo histórico es el caso de la **talidomida**.
+Funcionar como un recurso de apoyo en el estudio de química orgánica.
 
----
+🧪 Definición de quiralidad
 
-## 📂 Estructura del proyecto
+La quiralidad es una característica geométrica que poseen ciertas moléculas, en la cual su forma no puede superponerse a la de su imagen especular, de manera similar a lo que ocurre con las manos (izquierda y derecha).
+
+De esta propiedad surgen los enantiómeros, compuestos que comparten gran parte de sus propiedades químicas, pero que pueden generar efectos biológicos muy distintos.
+Un caso emblemático es el de la talidomida.
